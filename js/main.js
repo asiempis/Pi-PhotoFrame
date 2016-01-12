@@ -273,7 +273,6 @@ jQuery(document).ready(function($) {
 		$.feedToJson({
 			feed: feed,
 			success: function(data){
-				//console.log(data);
 				newshead = [];
 				news 	 = [];
 				for (var i in data.item) {
@@ -283,6 +282,7 @@ jQuery(document).ready(function($) {
 					newshead.push('Latest News: '+item.title);
 					
 				}
+				
 			}
 		});
 		
@@ -321,19 +321,32 @@ jQuery(document).ready(function($) {
 		    	speak("The time is "+time);
 		  };
 		  
-		  var sports = function() {
-	     		$.feedToJson({
-						feed: "http://sports.yahoo.com/soccer//rss.xml",
-						success: function(data){
-							if(data.item.length > 1) data = data.item;
-							data = data.slice(0, 5);
-							$.each(data, function(){
-								$('#sports').append('<li>' + this.title + '</li>');
-							});
-						}
-				});
-			  };
+	  	var sports = function() {
+	  		$('#display-area ul').empty();
+		 	$('#display-area div').empty();
+     		$.feedToJson({
+				feed: "http://sports.yahoo.com/soccer//rss.xml",
+				success: function(data){
+					if(data.item.length > 1) data = data.item;
+					data = data.slice(0, 5);
+					$.each(data, function(){
+						$('#sports').append('<li>' + this.title + '</li>');
+					});
+				}
+			});
+		  };
 			  
+		 var hungry = function() {
+		 	$('#display-area ul').empty();
+		 	$('#display-area div').empty();
+     	    $.getJSON( "meal.json", function( data ) {
+				$.each( data, function( key, val ) {
+					$('#lunch').append("Today's lunch: "+val.meal);
+					speak("Today's lunch: "+val.meal);
+				});
+			});
+		 } 
+		  			  
 		 var close = function(id) {
 		   	$('#'+id).empty();
 		 }
@@ -343,6 +356,7 @@ jQuery(document).ready(function($) {
 		    'weather': weather,
 		    '(what) time (is it)': time,
 		    'sports':sports,
+		    '(feeling) hungry': hungry,
 		    'close :tag':close,
 		  };
 		  

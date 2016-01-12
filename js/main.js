@@ -285,6 +285,7 @@ jQuery(document).ready(function($) {
 				}
 			}
 		});
+		
 		setTimeout(function() {
 			fetchNews();
 		}, 3600000); // 1 hours
@@ -320,10 +321,29 @@ jQuery(document).ready(function($) {
 		    	speak("The time is "+time);
 		  };
 		  
+		  var sports = function() {
+	     		$.feedToJson({
+						feed: "http://sports.yahoo.com/soccer//rss.xml",
+						success: function(data){
+							if(data.item.length > 1) data = data.item;
+							data = data.slice(0, 5);
+							$.each(data, function(){
+								$('#sports').append('<li>' + this.title + '</li>');
+							});
+						}
+				});
+			  };
+			  
+		 var close = function(id) {
+		   	$('#'+id).empty();
+		 }
+		  
 		  // Let's define a command.
 		  var commands = {
 		    'weather': weather,
 		    '(what) time (is it)': time,
+		    'sports':sports,
+		    'close :tag':close,
 		  };
 		  
 		  annyang.debug();

@@ -9,6 +9,10 @@ body, html {
 	 -webkit-font-smoothing: antialiased;
 }
 
+ul{
+    list-style: none;
+}
+
 .column-left{ float: left; width: 25%; padding-top:10px;}
 .column-right{ float: right; width: 25%; padding-top:10px; }
 .column-center{ position:absolute; bottom:100; width:100%; padding-top:10px;  }
@@ -98,4 +102,9 @@ body, html {
 	text-align:center;
 	line-height: 25px;
 
+}
+
+#tryme {
+    font-size: 30px;
+    font-style: italic;
 }

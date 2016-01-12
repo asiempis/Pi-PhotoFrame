@@ -5,14 +5,18 @@
 		<link rel="stylesheet" href="css/jquery.maximage.css?v=1.2" type="text/css" media="screen" charset="utf-8" />
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 		<link rel="stylesheet" type="text/css" href="css/weather-icons.css">
+		
 		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 		 <!--JS Scripts-->
 		<script src="js/jquery.cycle.all.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/jquery.maximage.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/jquery.feedToJSON.js"></script>
 		<script src="js/moment-with-langs.min.js"></script>
+		<script src="js/speak.js"></script>
+		<script src="js/annyang.min.js"></script>
+		
 		<script src="js/main.js"></script>
-
+		
 		 <!--Fonts-->
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800,700italic,800italic&subset=latin,greek' rel='stylesheet' type='text/css'>
 		 <!--Meta-->
@@ -26,15 +30,26 @@
 		<div class="column-left">
 		   <div class="date small dimmed"></div>
 		   <div class="time"></div>
+		   <div id="tryme">
+			<h3></h3>Try me.... just say:</h3>
+			<ul>
+				<li>1. What time is it?</li>
+				<li>2. Time</li>
+				<li>3. Weather</li>
+			</ul>									
+		</div>
 		</div>
 		<div class="column-right">
 		   <div class="windsun small dimmed"></div>
 		   <div style="clear:both;"></div>
-		   <div class="temp"></div>
+		   <div class="temp" id="temp"></div>
 		   <div style="clear:both;"></div>
 		   <div class="forecast small dimmed"></div>
 		</div>
+		
 		<div id="maximage">						
 		</div>
+		<div id="audio"></div>
+		<div id="unsupported"></div>
 	</body>
 </html>

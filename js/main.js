@@ -107,7 +107,6 @@ jQuery(document).ready(function($) {
 	(function updateImageSrcs()	{
 		$.getJSON( "images.json", function( data ) {
 			  $("#maximage").empty();
-			  console.log("test");
 			  $.each( data, function( key, val ) {
 				if (key!=0){
 					$('#maximage').append('<img src="' + val.url + '" />');
@@ -130,12 +129,13 @@ jQuery(document).ready(function($) {
 		var date = moment.weekdays(day) + ', ' + date+' ' + moment.months(month) + ' ' + year;
 		$('.date').html(date);
 		$('.time').html(now.toTimeString().substring(0,5) + '<span class="sec">'+now.toTimeString().substring(6,8)+'</span>');
+		
 		setTimeout(function() {
 			updateTime();
 		}, 1000);//1 second
 	})();
 	
-
+	//talkToMe(now.toTimeString().substring(0,5),"Time");
 
 	(function updateCompliment() {
 	  while (compliment == lastCompliment) {
@@ -208,8 +208,10 @@ jQuery(document).ready(function($) {
 			}
 
 			$('.windsun').updateWithText(windString+' '+sunString+'  '+locale.q, 1000);
+			
+			
 		});
-
+			
 		setTimeout(function() {
 			updateCurrentWeather();
 		}, 14400000); //  4 hours
@@ -302,6 +304,36 @@ jQuery(document).ready(function($) {
 			}, 7000);// 7 seconds
 	})();
 	
+	(function iCanHereYou() {
+		if (annyang) {
+				
+		  var weather = function() {
+		     	var temp = $( "#temp" ).text();
+		    	console.log(temp);
+		    	speak("Current Temperature is "+temp+" Celsius");
+		  };
+		   
+		  var time = function() {
+		     	var now = new Date();
+		    	var time = now.toTimeString().substring(0,5)
+		    	console.log(time);
+		    	speak("The time is "+time);
+		  };
+		  
+		  // Let's define a command.
+		  var commands = {
+		    'weather': weather,
+		    '(what) time (is it)': time,
+		  };
+		  
+		  annyang.debug();
+		  // Add our commands to annyang
+		  annyang.addCommands(commands);
 		
+		  // Start listening.
+		  annyang.start();
+		}
+	})();
+			
 });
 

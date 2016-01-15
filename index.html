@@ -1,17 +1,17 @@
 <html>
 	<head>
-		<title>Smart Talking Mirror</title>
+		<title>Pi-PhotoFrame</title>
 		<!--CSS-->
+		<link rel="stylesheet" href="css/jquery.maximage.css?v=1.2" type="text/css" media="screen" charset="utf-8" />
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 		<link rel="stylesheet" type="text/css" href="css/weather-icons.css">
 		
 		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 		 <!--JS Scripts-->
+		<script src="js/jquery.cycle.all.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.maximage.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/jquery.feedToJSON.js"></script>
 		<script src="js/moment-with-langs.min.js"></script>
-		<script src="js/speak.js"></script>
-		<script src="js/annyang.min.js"></script>
-		
 		<script src="js/main.js"></script>
 		
 		 <!--Fonts-->
@@ -21,28 +21,12 @@
 	</head>
 	<body>
 		<div class="column-center">
-			<div id="display-area" class="display-area small" >
-				<ul id="sports"></ul>
-				<div id="lunch"></div>
-			</div>
 			<div class="compliment light"></div>
 			<div class="newshead newsh medium"></div>
 		</div>
 		<div class="column-left">
 		   <div class="date small dimmed"></div>
 		   <div class="time"></div>
-		   <div id="tryme">
-			<h3></h3>Try me.... just say:</h3>
-			<ul>
-				<li>1. What time is it?</li>
-				<li>2. Time</li>
-				<li>3. Weather</li>
-				<li>4. Sports</li>
-				<li>5. Feeling hungry</li>
-				<li>6. Hungry</li>
-				<li>7. Close Sports or Close Lunch</li>
-			</ul>									
-		</div>
 		</div>
 		<div class="column-right">
 		   <div class="windsun small dimmed"></div>
@@ -52,7 +36,8 @@
 		   <div class="forecast small dimmed"></div>
 		</div>
 		
-		<div id="audio"></div>
-		<div id="unsupported"></div>
+		<div id="maximage">						
+		</div>
+		
 	</body>
 </html>

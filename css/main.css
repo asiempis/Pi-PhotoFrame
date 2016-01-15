@@ -4,7 +4,6 @@ body, html {
 	font-weight: 600;
 	color: #fff;
 	font-size: 75px;
-	background-color:#000;
 	text-shadow:3px 5px 8px #000;
 	 -webkit-font-smoothing: antialiased;
 }
@@ -102,13 +101,4 @@ ul{
 	text-align:center;
 	line-height: 25px;
 
-}
-
-#tryme {
-    font-size: 30px;
-    font-style: italic;
-}
-
-#display-area{
-	text-align:center;
 }

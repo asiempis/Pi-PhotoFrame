@@ -47,37 +47,6 @@ function kmh2beaufort(kmh)
 	}
 	return 12;
 }
-
-function updateSlideshow() {
-		// Trigger maximage
-		jQuery('#maximage').maximage({
-		cssBackgroundSize: false,
-		backgroundSize: function( $item ){
-			// Contain portrait but cover landscape
-			if ($item.data('h') > $item.data('w')) {
-				if ($.Window.data('w') / $.Window.data('h') < $item.data('ar')) {
-					$item
-						.height(($.Window.data('w') / $item.data('ar')).toFixed(0))
-						.width($.Window.data('w'));
-				} else {
-					$item
-						.height($.Window.data('h'))
-						.width(($.Window.data('h') * $item.data('ar')).toFixed(0));
-				}
-			} else {
-				if ($.Window.data('w') / $.Window.data('h') < $item.data('ar')) {
-					$item
-						.height($.Window.data('h'))
-						.width(($.Window.data('h') * $item.data('ar')).toFixed(0));
-				} else {
-					$item
-						.height(($.Window.data('w') / $item.data('ar')).toFixed(0))
-						.width($.Window.data('w'));
-				}
-			}
-		}
-	});
-};
 	
 
 jQuery(document).ready(function($) {
@@ -104,22 +73,6 @@ jQuery(document).ready(function($) {
 	moment.locale(lang);
    
 	
-	(function updateImageSrcs()	{
-		$.getJSON( "images.json", function( data ) {
-			  $("#maximage").empty();
-			  $.each( data, function( key, val ) {
-				if (key!=0){
-					$('#maximage').append('<img src="' + val.url + '" />');
-				}
-			  });
-			  updateSlideshow();
-		});
-		setTimeout(function() {
-			updateImageSrcs();
-		}, 86400000 );//24 hours
-	})();
-	
-	
 	(function updateTime()	{
 		var now = new Date();
 		var day = now.getDay();
@@ -135,8 +88,7 @@ jQuery(document).ready(function($) {
 		}, 1000);//1 second
 	})();
 	
-	//talkToMe(now.toTimeString().substring(0,5),"Time");
-
+	
 	(function updateCompliment() {
 	  while (compliment == lastCompliment) {
       //Check for current time  
